@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GpsModuleConfig</class>
+ <widget class="QDialog" name="GpsModuleConfig">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>656</width>
+    <height>738</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>GPS模块设置</string>
+  </property>
+  <widget class="QToolBox" name="toolBox">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>651</width>
+     <height>591</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>3</number>
+   </property>
+   <widget class="QWidget" name="page">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>651</width>
+      <height>353</height>
+     </rect>
+    </property>
+    <attribute name="label">
+     <string>波特率设置</string>
+    </attribute>
+    <widget class="QPushButton" name="baudrate_btn_4800">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>10</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>4800</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="baudrate_btn_9600">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>10</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>9600</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="baudrate_btn_19200">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>10</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>19200</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="baudrate_btn_38400">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>90</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>38400</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="baudrate_btn_57600">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>90</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>57600</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="baudrate_btn_115200">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>90</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>115200</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="baudrate_btn_230400">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>180</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>230400</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="baudrate_btn_460800">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>180</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>460800</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>230</y>
+       <width>481</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;    注意:该操作是设置GPS模块串口波特率,一但设置返回的数据就会生效.所以&lt;/span&gt;&lt;span style=&quot; font-size:18pt; color:#c2180d;&quot;&gt;必须断开串口后重新以对应的波特率打开端口&lt;/span&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;才可继续其它操作!!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>651</width>
+      <height>353</height>
+     </rect>
+    </property>
+    <attribute name="label">
+     <string>输出频率设置</string>
+    </attribute>
+    <widget class="QPushButton" name="response_1_hz">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>30</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1hz</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="response_2_hz">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>30</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>2hz</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="response_4_hz">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>30</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>4hz</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="response_5_hz">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>90</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>5hz</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="response_10_hz">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>90</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>10hz</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="response_20_hz">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>90</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>20hz</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>180</y>
+       <width>541</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;该操作为设置GPS模块的每秒返回坐标点次数的行为,是否生效取决于模块是否支持该频率.通常参考范围1-5&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_3">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>651</width>
+      <height>353</height>
+     </rect>
+    </property>
+    <attribute name="label">
+     <string>NMEA消息定制</string>
+    </attribute>
+    <widget class="QCheckBox" name="ggaCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>20</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>GGA</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="gllCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>20</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>GLL</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="gsaCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>20</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>GSA</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="gsvCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>10</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>GSV</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="rmcCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>60</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>RMC</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="vtgCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>60</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>VTG</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="zdaCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>60</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>ZDA</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="txtCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>60</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TXT</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="setNMEA">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>290</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>执行设置</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>140</y>
+       <width>541</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;注意: GSV语句缺少,本软件的信号质量功能无法使用RMC功能缺少,本软件的定位信息可能无法使用.如果仅普通定位速度获取等,可只开启RMC即可&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_4">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>651</width>
+      <height>353</height>
+     </rect>
+    </property>
+    <attribute name="label">
+     <string>卫星系统定制</string>
+    </attribute>
+    <widget class="QCheckBox" name="gsaCheckBox_2">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>0</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>GLONASS</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="gpsCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>0</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>GPS</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="bdsCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>0</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>BDS</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="stlConfigButton">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>280</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>执行设置</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>60</y>
+       <width>531</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;请至少保证有一个是勾选状态,全不选会开启所有.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; color:#d00f1b;&quot;&gt;注意&lt;/span&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;,并非多星定位就一定比单星定位好.如果明确哪个系统信号强时,单星定位要比多星要快,要精准哟&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;如果模块使用的场景并&lt;/span&gt;&lt;span style=&quot; font-size:18pt; color:#b50008;&quot;&gt;不能确定位置时使用多星则更好,返之单星更好&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;用户反馈 同条件下单星gps比多星快20秒以上.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_5">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>651</width>
+      <height>353</height>
+     </rect>
+    </property>
+    <attribute name="label">
+     <string>接收机版本设置</string>
+    </attribute>
+    <widget class="QRadioButton" name="VersionRadioButton">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>30</y>
+       <width>181</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>兼容 NMEA 4.1 以上版本</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="VersionRadioButton_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>80</y>
+       <width>511</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>兼容中国交通运输信息中心的 BDS/GPS 双模协议，兼容 NMEA 2.3 以上版本，兼容
+NMEA4.0 协议，默认协议</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="VersionRadioButton_3">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>130</y>
+       <width>411</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>兼容单 GPS NMEA0183 协议，兼容 NMEA 2.2 版本</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="serVersionButton">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>310</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>执行设置</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_6">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>651</width>
+      <height>353</height>
+     </rect>
+    </property>
+    <attribute name="label">
+     <string>设备信息</string>
+    </attribute>
+    <widget class="QPushButton" name="quueryInfopushButton">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>40</y>
+       <width>161</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>查询固件版本号</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>190</y>
+       <width>541</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;请注意观察串口返回数据&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="quueryInfopushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>40</y>
+       <width>161</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>查询硬件型号及序列号</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="quueryInfopushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>40</y>
+       <width>191</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>查询多模接收机的工作模式</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="quueryInfopushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>110</y>
+       <width>161</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>查询产品的客户编号</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="quueryInfopushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>110</y>
+       <width>161</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>查询升级代码信息</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_7">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>651</width>
+      <height>353</height>
+     </rect>
+    </property>
+    <attribute name="label">
+     <string>重启系统</string>
+    </attribute>
+    <widget class="QPushButton" name="restartPushButton">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>20</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>热启动</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="restartPushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>20</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>温启动</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="restartPushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>20</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>冷启动</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="restartPushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>100</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>出厂启动</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="restartPushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>100</y>
+       <width>191</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>关闭串口输出和射频部分</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="restartPushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>100</y>
+       <width>181</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>启动串口输出和射频部分</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>140</y>
+       <width>601</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;启动模式配置&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;0=热启动。不使用初始化信息，备份存储中的所有 数据有效。 &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;1=温启动。不使用初始化信息，清除星历。 &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;2=冷启动。不使用初始化信息，清除备份存储中除 配置外的所有数据。 &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;3=出厂启动。清除内存所有数据，并将接收机复位 至出厂默认配置。 &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;8=关闭串口输出和射频部分，可响应串口配置。 &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;9=启动串口输出和射频部分。与 8 对应。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="save_to_flash_btn">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>710</y>
+     <width>111</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>保存配置至flash</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>590</y>
+     <width>631</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>交互</string>
+   </property>
+   <widget class="QPushButton" name="copyCButton">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>30</y>
+      <width>101</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>复制为C语言</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="copyButton">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>30</y>
+      <width>71</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>复制</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lastCmdText">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>30</y>
+      <width>321</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>40</y>
+      <width>58</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>最后指令:</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/snr.html</file>
+        <file>resource/echarts.min.js</file>
+        <file>resource/locate.html</file>
+        <file>resource/bootstrap.min.css</file>
+        <file>resource/jquery.min.js</file>
+        <file>resource/bootstrap.min.js</file>
+        <file>resource/gnss.txt</file>
+        <file>resource/images/compile.png</file>
+        <file>resource/images/remove.png</file>
+        <file>resource/images/download.png</file>
+        <file>resource/images/dump.png</file>
+        <file>resource/images/edit.png</file>
+        <file>resource/images/rename.png</file>
+        <file>resource/images/execute.png</file>
+        <file>resource/images/viewHex.png</file>
+        <file>resource/images/upload.png</file>
+        <file>resource/images/refresh.png</file>
+    </qresource>
+</RCC>

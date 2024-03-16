@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SignaltoNoiseRatio</class>
+ <widget class="QDialog" name="SignaltoNoiseRatio">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>462</width>
+    <height>410</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>信噪比图</string>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>第一个 ECharts 实例</title>
+    <!-- 引入 echarts.js -->
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="margin:0px;padding:0px;width: 100%;height:400px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: ''
+        },
+        backgroundColor: '#efefef', // 设置背景颜色
+        tooltip: {},
+        legend: {
+            data: ['信噪比']
+        },
+        xAxis: {
+            data: [ ],
+            axisLabel:{
+              interval:0,
+              rotate:30
+            },
+        },
+        yAxis: {
+            type: 'value' ,
+            min: 0, //设置y轴最小值
+            max: 100, //设置y轴最大值
+            interval: 30 //设置y轴刻度间隔
+        },
+
+        label: {
+            show: true,
+            precision: 1,
+            position: 'top',
+            valueAnimation: true,
+            fontFamily: 'monospace'
+        },
+        series: [{
+            name: '信噪比值',
+            type: 'bar',
+            showBackground: true,
+            backgroundStyle: {
+                color: 'rgba(180, 180, 180, 0.2)'
+            },
+
+            max:100
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+    // 监听窗口的resize事件
+    window.addEventListener('resize', function () {
+        myChart.resize();
+        adjustChartHeight();
+    });
+
+
+    // 调整图表高度
+    function adjustChartHeight() {
+        var chartContainer = document.getElementById('main');
+        var windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        var chartHeight = windowHeight - chartContainer.getBoundingClientRect().top;
+        chartContainer.style.height = chartHeight + 'px';
+
+        console.log("old",option.yAxis.interval);
+        option.yAxis.interval = parseInt(100/chartHeight*40);
+        console.log("new",option.yAxis.interval);
+
+        return chartHeight;
+    }
+
+    function updateChatValue() {
+        myChart.setOption(option);
+        setTimeout("updateChatValue()", 1000);
+    }
+
+    //rgb转HexRGB
+    function componentToHex(c) {
+        c = c <=0 ? 0:c;
+        c = c >=255  ? 255:c;
+        const hex = c.toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+    }
+
+    let colorTpl = {};
+    function initColorTpl() {
+        for (let i = 0; i < 10; i++) {
+            shade = parseInt(i * 51);
+            if (shade > 250) shade = 255;
+            shade += 30;//多少带点基准色，别信号差的全是白色的
+            colorTpl[`${i * 10}`] = {// GPS SBAS GLONASS QZSS BD GALILEO IRNSS
+                GALILEO: `#${componentToHex(255)}${componentToHex(255)}${componentToHex(255-shade)}`,//GALILEO 黄色
+                BD: `#${componentToHex(255)}${componentToHex(255 - shade)}${componentToHex(255 - shade)}`,//BD 红色
+                GPS: `#${componentToHex(255 - shade)}${componentToHex(255 - shade)}${componentToHex(255)}`,//GPS 蓝色
+                GLONASS: `#${componentToHex(255-shade)}${componentToHex(255)}${componentToHex(255-shade)}`,//GLONASS 绿色
+                SBAS:  `#${componentToHex(255 - shade)}${componentToHex(255 - shade)}${componentToHex(255)}`,//GPS 蓝色
+                QZSS:`#${componentToHex(255-shade)}${componentToHex(255)}${componentToHex(255)}`,//QZSS 青色 00FFFF
+                IRNSS: `#${componentToHex(255)}${componentToHex(255-shade)}${componentToHex(255)}`,//IRNSS 紫红 FF00FF 
+                UNKNOW: `#${componentToHex(255 - shade)}${componentToHex(255 - shade)}${componentToHex(255 - shade)}`//所有未定位时统一使用 灰色
+            };
+        }
+    }
+    //外部程序调用渲染数据入口，qt调用处 seriesData是信噪值 如[1,2,3,4,5] xAxisData是每一列的名称，比如gps名称["gps1"....,"gps5"]
+    function setChatValue(seriesData, xAxisData, readyList, viewTotal,usedTotal) {
+        let seriesDataList = [];
+        let color;
+        for (let i = 0; i <  seriesData.length; i++) {
+        	let colorIndex = parseInt(seriesData[i]/10)*10;
+        	console.log(colorTpl  );console.log(colorIndex)
+            color = colorTpl[colorIndex]["UNKNOW"];//所有未定位或是不在主系统的 都用这颜色；
+            //根据传入的字段，取出所属系统 GPS[15]=>GPS
+            let sl = xAxisData[i].split("[")[0].toUpperCase();
+            if ( sl in colorTpl[colorIndex]  && readyList[i]) {//只有就续的 且在表中的才彩色的
+                color = colorTpl[colorIndex][sl];
+            }
+            seriesDataList[i] = {"value" : seriesData[i], "itemStyle": {"color": color }}
+        }
+        console.log( seriesDataList );
+
+        option.series[0].data = seriesDataList;
+        option.xAxis.data = xAxisData;
+        option.title.text = "可用:"+usedTotal+"/可视:"+viewTotal;
+
+    }
+
+    ///-------------------exec
+
+    initColorTpl()
+    updateChatValue();
+    // 初始加载时调整图表高度
+    adjustChartHeight();
+
+// 测试代码
+//setChatValue([10,20,25,35,45,29,36,41,50,18], ["BD[01]","GALILEO[01]","GPS[01]","GLONASS11","SBAS[01]","BD[22]","IRNSS[01]","GPS[04]","BD[333]","GLONASS[999]"], false, 10,3)
+</script>
+</body>
+</html>

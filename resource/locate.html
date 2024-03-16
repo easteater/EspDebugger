@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RMC和GGA信息解析</title>
+    <meta charset="UTF-8">
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <style>
+        body {
+            padding: 2px;
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 2px;
+            text-align: left !important;
+            border-bottom: 1px solid #ddd;
+            font-size: 12px;
+        }
+
+        input {
+            border: 1px solid #ddd;
+            padding: 6px 12px;
+            width: 100%;
+            font-size: 12px;
+        }
+
+        .success {
+            color: #4CAF50;
+        }
+
+        .failure {
+            color: #000000;
+        }
+
+        .dateGetTime {
+            color: #ff0000;
+        }
+
+        .timeGetTime {
+            color: #ff0000;
+        }
+
+        .successfulTime {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+<h6 align=center>定位信息
+    <button onclick="location.reload()">清空时间</button>
+</h6>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table>
+                <tbody>
+
+
+                <tr>
+                    <td><label class="font-weight-bold">纬度：</label></td>
+                    <td><input class="font-weight-bold" id="latitude" readonly></td>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="font-weight-bold">经度：</label></td>
+                    <td><input class="font-weight-bold" id="longitude" readonly></td>
+                    <td>
+                        <div class="tooltip"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="font-weight-bold">海拔：</label></td>
+                    <td><input class="font-weight-bold" id="altitude" readonly></td>
+                    <td>
+                        <div class="tooltip"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="font-weight-bold">速度：</label></td>
+                    <td><input class="font-weight-bold" id="speed" readonly></td>
+
+                    <td>
+                        <div class="tooltip"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="font-weight-bold">串口状态：</label></td>
+                    <td><input class="font-weight-bold" id="serialStatus" readonly></td>
+                    <td>
+                        <div id="serialFirstTime"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="font-weight-bold">时间：</label></td>
+                    <td><input class="font-weight-bold" id="utcTime" readonly></td>
+                    <td>
+                        <div class="timeGetTime"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="font-weight-bold">日期：</label></td>
+                    <td><input class="font-weight-bold" id="utcDate" readonly></td>
+                    <td>
+                        <div class="dateGetTime"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="font-weight-bold">状态：</label></td>
+                    <td><input class="font-weight-bold" id="status" readonly></td>
+                    <td>
+                        <div class="successfulTime"></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<script>
+
+    let onlineTime = "";
+    let getTimeAt = "";
+    let getDateAt = "";
+    let successfulAt = "";
+
+
+    let oldInfo = {};
+    let portTimeoutTimer = setTimeout(() => {
+        setSerialStatus(false);
+        console.log("portTimeoutTimer run")
+    }, 2000);
+
+    function setSerialStatus(status) {
+        //在线的时候且最后在线时间是空。才去更新在线时间
+        if (status) {
+            $('#serialStatus').val("online");
+            if (onlineTime === "") {
+                onlineTime = getCurrentDateTime();
+                $('#serialFirstTime').html(onlineTime);
+            }
+
+        } else {
+            onlineTime = "";
+            getTimeAt = "";
+            getDateAt = "";
+            successfulAt = "";
+            $('#serialStatus').val("offline");
+        }
+    }
+
+    function getCurrentDateTime() {
+        var currentDate = new Date();
+        var year = currentDate.getFullYear();
+        var month = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+        var day = ('0' + currentDate.getDate()).slice(-2);
+        var hours = ('0' + currentDate.getHours()).slice(-2);
+        var minutes = ('0' + currentDate.getMinutes()).slice(-2);
+        var seconds = ('0' + currentDate.getSeconds()).slice(-2);
+        var milliseconds = ('00' + currentDate.getMilliseconds()).slice(-3);
+        return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + '.' + milliseconds;
+    }
+
+    /**
+     time1-time2 = x ms
+     */
+     function getTimeDiff(time1, time2) {
+         return (new Date(time1) - new Date(time2)) / 1000;
+         return 0;
+     }
+    /**
+            2023-12-12 12:12:12.567=>12:12:12.566
+    */
+    function ymdhmsTohms(time) {
+        return time.split(' ')[1];
+    }
+
+    function updateInfo(latitude, longitude, altitude, utcDate, utcTime, speed, isAlready, setOnline = true) {
+        $('#latitude').val(latitude);
+        $('#longitude').val(longitude);
+        $('#altitude').val(altitude);
+        $('#utcDate').val(utcDate);
+        $('#utcTime').val(utcTime);
+        $('#speed').val(speed);
+        $('#status').val(isAlready ? "已定位" : "定位中");
+
+
+        if (oldInfo.utcTime == "" && utcTime != "") {
+            getTimeAt = getCurrentDateTime();
+            $(".timeGetTime").html("["+ymdhmsTohms(getTimeAt) + "]" + getTimeDiff(getTimeAt, onlineTime) + "秒");
+        }
+
+        if (oldInfo.utcDate == "" && utcDate != "") {
+            getDateAt = getCurrentDateTime()
+            $(".dateGetTime").html("["+ymdhmsTohms(getDateAt) + "]" + getTimeDiff(getDateAt, onlineTime) + "秒" + "," + getTimeDiff(getDateAt, getTimeAt) + "秒");//
+        }
+
+        if (!oldInfo.isAlready && isAlready) {
+            successfulAt = getCurrentDateTime();
+            $(".successfulTime").html("["+ymdhmsTohms(successfulAt) + "]" + getTimeDiff(successfulAt, onlineTime) + "秒,"
+                + getTimeDiff(successfulAt, getTimeAt) + "秒,"
+            + getTimeDiff(successfulAt, getDateAt) + "秒")         ;
+        }
+
+        if (oldInfo.latitude !== latitude) oldInfo.latitude = latitude;
+        if (oldInfo.longitude !== longitude) oldInfo.longitude = longitude;
+        if (oldInfo.altitude !== altitude) oldInfo.altitude = altitude;
+        if (oldInfo.utcDate !== utcDate) oldInfo.utcDate = utcDate;
+        if (oldInfo.utcTime !== utcTime) oldInfo.utcTime = utcTime;
+        if (oldInfo.speed !== speed) oldInfo.speed = speed;
+        if (oldInfo.isAlready !== isAlready) oldInfo.isAlready = isAlready;
+
+
+        if (isAlready) {
+            $('.font-weight-bold').removeClass("failure").addClass('success');
+        } else {
+            $('.font-weight-bold').removeClass("success").addClass('failure');
+        }
+        clearTimeout(portTimeoutTimer)
+        portTimeoutTimer = setTimeout(() => {
+            setSerialStatus(false);
+            console.log("portTimeoutTimer run")
+        }, 2000)
+        if (setOnline) {
+            setSerialStatus(true)
+        }
+
+    }
+
+    // Copy input field value on click
+    $('input').click(function () {
+        $(this).select();
+        document.execCommand('copy');
+
+    });
+    // 示例数据
+    const latitude = "";
+    const longitude = "";
+    const altitude = "";
+    const utcDate = "";
+    const utcTime = "";
+    const speed = "";
+    const isSuccessful = 0;
+    const serialReady = 0;
+
+    // 更新信息
+    updateInfo(latitude, longitude, altitude, utcDate, utcTime, speed, isSuccessful, false);
+</script>
